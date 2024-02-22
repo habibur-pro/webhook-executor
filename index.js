@@ -24,11 +24,12 @@ app.post("/webhook/execute", async (req, res) => {
         body: JSON.stringify(payload),
       });
       const result = await response.json();
-      res.status(200).json({ success: true });
+      res.status(200).json({ success: true, data: result });
     } catch (error) {
       throw new Error(error);
     }
   } catch (error) {
+    console.log(error);
     res.status(500).json({ success: false, message: error.message });
   }
 });
