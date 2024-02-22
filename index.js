@@ -1,8 +1,9 @@
-const express = require("express");
+import express from "express";
 const app = express();
 const port = 8000;
-const cors = require("cors");
-require("dotenv").config();
+import cors from "cors";
+import fetch from "node-fetch";
+import "dotenv/config";
 
 app.use(cors());
 app.use(express.json());
@@ -32,11 +33,6 @@ app.post("/webhook/execute", async (req, res) => {
     console.log(error);
     res.status(500).json({ success: false, message: error.message });
   }
-});
-
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send("Something went wrong!");
 });
 
 app.listen(port, () => {
