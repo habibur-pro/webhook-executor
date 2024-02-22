@@ -14,7 +14,6 @@ app.get("/", (req, res) => {
 app.post("/webhook/execute", async (req, res) => {
   try {
     const payload = req.body;
-    console.log({ pay });
     const recallUrl = process.env.recall_url;
     try {
       const response = await fetch(recallUrl, {
